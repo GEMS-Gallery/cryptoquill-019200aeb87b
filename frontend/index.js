@@ -2,18 +2,20 @@ import { backend } from 'declarations/backend';
 
 let quill;
 
+const newPostBtn = document.getElementById('newPostBtn');
+const postForm = document.getElementById('postForm');
+
+newPostBtn.addEventListener('click', () => {
+    console.log('New Post button clicked'); // Add this line for debugging
+    postForm.style.display = postForm.style.display === 'none' ? 'block' : 'none';
+});
+
 document.addEventListener('DOMContentLoaded', async function() {
     quill = new Quill('#editor', {
         theme: 'snow'
     });
 
-    const newPostBtn = document.getElementById('newPostBtn');
-    const postForm = document.getElementById('postForm');
     const blogPostForm = document.getElementById('blogPostForm');
-
-    newPostBtn.addEventListener('click', () => {
-        postForm.style.display = postForm.style.display === 'none' ? 'block' : 'none';
-    });
 
     blogPostForm.addEventListener('submit', async (e) => {
         e.preventDefault();
